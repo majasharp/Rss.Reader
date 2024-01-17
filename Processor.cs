@@ -52,7 +52,7 @@ namespace Rss.Reader
                         Title = article.Title.Text,
                         Author = article.Authors.FirstOrDefault()?.Name ?? "",
                         Created = article.PublishDate.DateTime,
-                        Content = article.Summary?.Text ?? ""
+                        Content = ""
                     });
 
                     articleId++;

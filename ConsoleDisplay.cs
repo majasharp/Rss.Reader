@@ -4,7 +4,12 @@ namespace Rss.Reader
 {
     public class ConsoleDisplay
     {
-        public void ShowFeeds(List<Feed> feeds)
+        private readonly HtmlParser _parser;
+        public ConsoleDisplay(HtmlParser parser)
+        {
+            _parser = parser;
+        }
+        public async Task ShowFeedsAsync(List<Feed> feeds)
         {
             while (true)
             {
@@ -25,12 +30,12 @@ namespace Rss.Reader
                 {
                     Console.Clear();
                     var currentFeed = feeds.FirstOrDefault(x => x.Id == int.Parse(feedId));
-                    ShowArticles(currentFeed);
+                    await ShowArticlesAsync(currentFeed);
                 }
             }
         }
 
-        private void ShowArticles(Feed currentFeed)
+        private async Task ShowArticlesAsync(Feed currentFeed)
         {
             while (true)
             {
@@ -59,6 +64,7 @@ namespace Rss.Reader
                     {
                         Console.Clear();
                         var currentArticle = currentFeed.Articles.First(x => x.Id == int.Parse(articleId));
+                        currentArticle.Content = await _parser.ParseHtmlAsync(currentArticle.Url);
                         ShowArticle(currentArticle);
                     }
                 }
