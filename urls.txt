@@ -1,1 +1,7 @@
 https://hnrss.org/frontpage
+https://www.nu.nl/rss/Algemeen
+https://www.cyberciti.com/feed/
+https://www.tecmint.com/feed/
+https://blog.cleancoder.com/atom.xml
+https://api.quantamagazine.org/feed
+https://www.economist.com/international/rss.xml

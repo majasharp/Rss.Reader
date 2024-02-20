@@ -1,4 +1,5 @@
-﻿using HtmlAgilityPack;
+﻿using System.Net;
+using HtmlAgilityPack;
 using System.Text;
 
 namespace Rss.Reader
@@ -37,7 +38,7 @@ namespace Rss.Reader
                     }
                 }
 
-                return sb.ToString();
+                return WebUtility.HtmlDecode(sb.ToString());
             }
             catch (Exception ex)
             {
